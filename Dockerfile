@@ -3,7 +3,7 @@ MAINTAINER spl147@live.com
 
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNIFI_VERSION 5.8.21-2a76eef78d
+ENV UNIFI_VERSION 5.8.23
 
     # INSTALL PACKAGES
 RUN echo "deb http://ftp.us.debian.org/debian stretch main" \

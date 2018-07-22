@@ -1,8 +1,6 @@
 FROM debian:stretch
-MAINTAINER brettm357@me.com
+MAINTAINER spl147@live.com
 
-ARG BUILD_DATE
-ARG VERSION=5.8.25
 
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive

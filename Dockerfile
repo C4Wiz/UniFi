@@ -1,5 +1,8 @@
 FROM debian:stretch
-MAINTAINER spl147@live.com
+MAINTAINER brettm357@me.com
+
+ARG BUILD_DATE
+ARG VERSION=5.8.25
 
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
@@ -13,6 +16,7 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
     apt-get dist-upgrade -y && \
     apt-get -y install --no-install-recommends \
       binutils \
+      curl \
       jsvc \
       libcap2 \
       mongodb-server \
@@ -22,14 +26,14 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
       wget && \
         
     # INSTALL UNIFI    
-    wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \    
+    wget -nv https://dl.ubnt.com/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \    
     dpkg --install unifi_sysvinit_all.deb && \
     rm unifi_sysvinit_all.deb && \
     apt-get -y purge wget && \
     
     # FIX WEBRTC STACK GUARD ERROR 
     execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so && \
-    apt-get -y purge prelink &&\     
+    apt-get -y purge prelink && \     
      
     apt-get -q clean && \ 
     apt-get -y autoremove && \
